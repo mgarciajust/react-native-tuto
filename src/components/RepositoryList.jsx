@@ -15,8 +15,7 @@ const RepositoryList = () => {
             renderItem={({ item: repo }) => ( //Similar a .map
                 //Creo un componente al que le voy pasando los items
                 <RepositoryItem {...repo}/>
-            )}>
-        </FlatList>
+        )}/>
 
         /*
         -- Con scroll de pantalla --

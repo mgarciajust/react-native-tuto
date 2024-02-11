@@ -1,4 +1,4 @@
-import { View, Text } from "react-native"
+import { View, Text, StyleSheet } from "react-native"
 import React from "react"
 
 //Aquí estilo los items de mi lista
@@ -6,18 +6,10 @@ import React from "react"
 const RepositoryItem = (props) => (
     <View
         key={props.id}
-        style={
-            {
-                padding: 20,
-                paddingBottom: 10,
-                paddingTop: 5
-    }}>
+        style={styles.container}>
+
         <Text
-            style={
-                {
-                    fontWeight: "bold",
-                    marginBottom: 5
-        }}>   
+            style={styles.strong}>
             {props.id}
         </Text>
         <Text>{props.fullname}</Text>
@@ -28,5 +20,19 @@ const RepositoryItem = (props) => (
     </View>
 
 )
+
+//Simula hoja estilos. No se puede global
+const styles = StyleSheet.create({
+    container: {
+        padding: 20,
+        paddingBottom: 10,
+        paddingTop: 5
+    },
+    strong: {
+        fontWeight: "bold",
+        marginBottom: 5,
+        color: "blue"
+    },    
+})
 
 export default RepositoryItem
