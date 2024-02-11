@@ -7,10 +7,12 @@ import RepositoryList from "./RepositoryList.jsx"
 const Main = () => {
     return (
         <View style={ //Para dar estilo usar prop style={{}}
-            { marginTop: Constants.statusBarHeight} //Altura predefinida para barra hora/bateria superior
-        }>
+            { 
+                marginTop: Constants.statusBarHeight 
+                //Altura predefinida para barra hora/bateria superior
+            }}>
             <Text>Rate Repository Application</Text>
-            <RepositoryList/>
+            <RepositoryList />
         </View>
     )
 }
