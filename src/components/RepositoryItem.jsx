@@ -1,4 +1,4 @@
-import { View, Text, Image, StyleSheet } from "react-native"
+import { View, Text, Image, StyleSheet, TouchableOpacity, Linking } from "react-native"
 import React from "react"
 
 const RepositoryStats = (props) => {
@@ -18,22 +18,22 @@ const RepositoryStats = (props) => {
 
 //Aquí estilo los items de mi lista
 //Le paso cada item con props (parámetros)
+//TouchableOpacity & Linking = <a>
 const RepositoryItem = (props) => (
-    <View
-        key={props.id}
-        style={styles.container}>
-
+    <View key={props.id} style={styles.container}>
         <View style={styles.left}>
             <Image style={styles.image} source={{uri: props.url}}/>
             <Text style={styles.strong}>{props.fullname}</Text>
         </View>
     
         <Text style={styles.text}>{props.description}</Text>
-        <Text style={styles.button}>url</Text>
-        <Text style={styles.blue}>{props.url}</Text>
+
+        <TouchableOpacity onPress={() => Linking.openURL(props.url)}>
+            <Text style={styles.button}>Ver repositorio</Text>
+        </TouchableOpacity>
+
         <RepositoryStats {...props}/>
     </View>
-
 )
 
 //Simula hoja estilos. No se puede global
@@ -76,7 +76,8 @@ const styles = StyleSheet.create({
     left: {
         flexDirection: "row",
         justifyContent: "flex-start",
-        alignItems: "center"
+        alignItems: "center",
+        marginBottom: 15
     },
     center: {
         textAlign: "center"
@@ -87,7 +88,8 @@ const styles = StyleSheet.create({
         borderRadius: 4,
         overflow: "hidden",
         alignSelf: "flex-start",
-        padding: 5
+        padding: 5,
+        marginVertical: 15
     },
     image: {
         width: 48,
