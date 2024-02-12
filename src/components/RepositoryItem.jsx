@@ -22,15 +22,18 @@ const RepositoryStats = (props) => {
 const RepositoryItem = (props) => (
     <View key={props.id} style={styles.container}>
         <View style={styles.left}>
-            <Image style={styles.image} source={{uri: props.url}}/>
-            <Text style={styles.strong}>{props.fullname}</Text>
+            <View>
+                <Image style={styles.image} source={{uri: props.url}}/>
+            </View>
+            <View>
+                <Text style={styles.strong}>{props.fullname}</Text>
+                <TouchableOpacity onPress={() => Linking.openURL(props.url)}>
+                    <Text style={styles.button}>Ver repositorio</Text>
+                </TouchableOpacity>
+            </View>
         </View>
     
         <Text style={styles.text}>{props.description}</Text>
-
-        <TouchableOpacity onPress={() => Linking.openURL(props.url)}>
-            <Text style={styles.button}>Ver repositorio</Text>
-        </TouchableOpacity>
 
         <RepositoryStats {...props}/>
     </View>
@@ -49,7 +52,6 @@ const styles = StyleSheet.create({
     },
     strong: {
         fontWeight: "bold",
-        marginBottom: 5,
         color: "blue"
     },
     text: {
@@ -79,6 +81,12 @@ const styles = StyleSheet.create({
         alignItems: "center",
         marginBottom: 15
     },
+    column: {
+        flexDirection: "column",
+        justifyContent: "flex-start",
+        alignItems: "center",
+        marginBottom: 15
+    },
     center: {
         textAlign: "center"
     },
@@ -89,13 +97,13 @@ const styles = StyleSheet.create({
         overflow: "hidden",
         alignSelf: "flex-start",
         padding: 5,
-        marginVertical: 15
+        marginTop: 5
     },
     image: {
         width: 48,
         height: 48,
         borderRadius: 4,
-        marginRight: 10
+        marginRight: 10,
     }
 
 })
